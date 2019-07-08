@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<robot name="friction_wall" xmlns:xacro="http://wiki.ros.org/xacro">
+  <material name="aluminum">
+    <color rgba="0.5 0.5 0.5 1"/>
+  </material>
+  <link name="base_link">
+    <inertial>
+      <mass value="9.85208649605"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1"/>
+    </inertial>
+  </link>
+  <joint name="push" type="prismatic">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="wall"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-2" upper="2"/>
+  </joint>
+  <link name="wall">
+    <collision>
+      <origin rpy="0 1.5707963 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.25"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="9.85208649605"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1"/>
+    </inertial>
+  </link>
+</robot>
